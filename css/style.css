@@ -1,0 +1,152 @@
+:root {
+    --cream: #FFF5E8;
+    --light-cream: #FFFBF7;
+    --terracotta: #D96B32;
+    --green: #405B43;
+    --white: #FFFFFF;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--light-cream);
+    color: var(--green);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+.site-header {
+    background-color: var(--cream);
+    border-bottom: 1px solid #E8D9C5;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 85px;
+}
+
+.site-logo {
+    display: inline-flex;
+    align-items: center;
+}
+
+.site-logo img {
+    display: block;
+    width: 350px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Header Navigation */
+.main-navigation ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-navigation a {
+    display: block;
+    color: var(--green);
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 10px 0;
+    transition: color 0.2s ease;
+}
+
+.main-navigation a:hover,
+.main-navigation a[aria-current="page"] {
+    color: var(--terracotta);
+}
+
+.main-navigation a:focus-visible,
+.site-logo:focus-visible,
+.menu-toggle:focus-visible {
+    outline: 2px solid var(--terracotta);
+    outline-offset: 4px;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+/* Mobile Screen */
+
+@media (max-width: 768px) {
+
+    .header-container {
+        position: relative;
+        min-height: 100px;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .site-logo img {
+        width: 260px;
+    }
+
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        color: var(--green);
+        font-size: 35px;
+        padding-top: 8px;
+        cursor: pointer;
+    }
+
+    .main-navigation {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;
+        background-color: var(--cream);
+        border-bottom: 1px solid var(--border-color);
+        padding: 20px;
+        z-index: 1000;
+    }
+
+    .main-navigation.active {
+        display: block;
+    }
+
+    .main-navigation ul {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .main-navigation a {
+        display: block;
+        font-size: 20px;
+        padding: 12px;
+        color: var(--green);
+        text-decoration: none;
+    }
+}
