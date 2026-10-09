@@ -60,7 +60,7 @@ body {
 
 .main-navigation a {
     display: block;
-    color: var(--green);
+    color: var(--terracotta);
     text-decoration: none;
     font-size: 25px;
     font-weight: bold;
@@ -70,7 +70,7 @@ body {
 
 .main-navigation a:hover,
 .main-navigation a[aria-current="page"] {
-    color: var(--terracotta);
+    color: var(--green);
 }
 
 .main-navigation a:focus-visible,
