@@ -156,6 +156,7 @@ textarea {
     padding: 20px 0px 50px;
 }
 
+.section-heading h1,
 .section-heading h2 {
     font-size: 60px;
     margin: 0;
@@ -545,6 +546,7 @@ textarea {
 
 
     /* Feature Recipes Section */
+    .section-heading h1,
     .section-heading h2 {
         font-size: 45px;
     }
@@ -562,10 +564,10 @@ textarea {
 
     /* Featured recipes */
     .recipe-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 20px;
     }
-
+    
     .recipe-card-body {
         padding: 20px;
     }
@@ -667,6 +669,12 @@ textarea {
     }
 
     /* Feature Recipes Section */
+    .recipe-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .section-heading h1,
     .section-heading h2 {
         font-size: 36px;
         margin: 0px;
