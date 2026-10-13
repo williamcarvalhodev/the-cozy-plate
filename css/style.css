@@ -149,7 +149,8 @@ textarea {
 }
 
 /* Feature Recipes Section */
-.featured-recipes .container {
+.featured-recipes .container,
+.all-recipes .container {
     width: 90%;
     max-width: 1200px;
     padding: 20px 0px 50px;
