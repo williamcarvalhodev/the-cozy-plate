@@ -285,6 +285,41 @@ textarea {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
+/* Suggest Recipe Section */
+.suggest-recipes {
+    background-color: var(--terracotta);
+    padding: 50px 0px 70px;
+}
+
+.suggest-section-heading h2 {
+    font-size: 60px;
+    color: var(--cream);
+    text-align: center;
+    margin: 0
+}
+
+.suggest-recipes-description {
+    color: var(--cream);
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    margin: 10px;
+}
+
+.suggest-recipe-button {
+    display: flex;
+    background-color: var(--green);
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--cream);
+    text-decoration: none;
+    padding: 20px 50px;
+    border-radius: 8px;
+    width: fit-content;
+    margin: 20px auto 0;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
 /* Footer */
 .site-footer {
     background-color: var(--green);
@@ -405,6 +440,12 @@ textarea {
     }
 
     .hero-button {
+        font-size: 18px;
+        padding: 17px 45px;
+    }
+
+    /* Suggest recipe section */
+    .suggest-recipe-button {
         font-size: 18px;
         padding: 17px 45px;
     }
@@ -536,6 +577,20 @@ textarea {
         font-size: 15px;
     }
 
+    /* Suggest recipe section */
+    .suggest-section-heading h2 {
+        font-size: 45px;
+    }
+
+    .suggest-recipes-description {
+        font-size: 16px;
+    }
+
+    .suggest-recipe-button {
+        font-size: 17px;
+        padding: 15px 35px;
+    }
+
     /* Footer*/
     .footer-content {
         display: grid;
@@ -645,5 +700,19 @@ textarea {
         width: fit-content;
         padding: 13px 28px;
         margin: 20px auto 0;
+    }
+
+    /* Suggest recipe section */
+    .suggest-section-heading h2 {
+        font-size: 36px;
+    }
+
+    .suggest-recipes-description {
+        font-size: 15px;
+    }
+
+    .suggest-recipe-button {
+        font-size: 15px;
+        padding: 13px 28px;
     }
 }
