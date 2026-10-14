@@ -140,7 +140,7 @@ textarea {
     text-decoration: none;
     padding: 20px 50px;
     border-radius: 8px;
-    transition: transform 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .hero-button:hover {
@@ -319,7 +319,7 @@ textarea {
     border-radius: 8px;
     width: fit-content;
     margin: 20px auto 0;
-    transition: transform 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 /* Search bar recipes page */
@@ -370,6 +370,45 @@ textarea {
 .search-input-wrapper:focus-within {
     border-color: var(--terracotta);
     box-shadow: 0 0 0 3px rgba(217, 107, 50, 0.15);
+}
+
+/* Recipe filters */
+.recipe-filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.filter-button {
+    background-color: var(--white);
+    color: var(--green);
+    border: 1px solid #E8D9C5;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.filter-button:hover {
+    background-color: var(--terracotta);
+    color: var(--white);
+    transform: scale(1.05);
+}
+
+.filter-button.active {
+    background-color: var(--terracotta);
+    color: var(--white);
+    border-color: var(--terracotta);
+}
+
+.filter-button:focus-visible {
+    outline: 3px solid var(--green);
+    outline-offset: 3px;
 }
 
 /* Footer */
@@ -661,6 +700,17 @@ textarea {
         font-size: 18px;
     }
 
+    /* Recipe filters */
+    .recipe-filters {
+        gap: 5px;
+        margin-bottom: 30px;
+    }
+
+    .filter-button {
+        font-size: 14px;
+        padding: 7px 8px;
+    }
+
     /* Footer*/
     .footer-content {
         display: grid;
@@ -790,5 +840,15 @@ textarea {
     .suggest-recipe-button {
         font-size: 15px;
         padding: 13px 28px;
+    }
+
+    /* Recipe filters */
+    .recipe-filters {
+        margin-bottom: 20px;
+    }
+
+    .filter-button {
+        font-size: 12px;
+        padding: 7px 8px;
     }
 }
