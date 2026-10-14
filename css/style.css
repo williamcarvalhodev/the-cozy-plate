@@ -322,6 +322,56 @@ textarea {
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
+/* Search bar recipes page */
+.recipe-search {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.recipe-search label {
+    display: block;
+    color: var(--green);
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.search-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--white);
+    border: 1px solid #E8D9C5;
+    border-radius: 10px;
+    padding: 15px 20px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input-wrapper i {
+    color: var(--terracotta);
+    font-size: 20px;
+}
+
+.search-input-wrapper input {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--green);
+    font-size: 16px;
+}
+
+.search-input-wrapper input::placeholder {
+    color: #817A73;
+}
+
+.search-input-wrapper:focus-within {
+    border-color: var(--terracotta);
+    box-shadow: 0 0 0 3px rgba(217, 107, 50, 0.15);
+}
+
 /* Footer */
 .site-footer {
     background-color: var(--green);
@@ -567,7 +617,7 @@ textarea {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 20px;
     }
-    
+
     .recipe-card-body {
         padding: 20px;
     }
@@ -592,6 +642,23 @@ textarea {
     .suggest-recipe-button {
         font-size: 17px;
         padding: 15px 35px;
+    }
+
+    /* Search bar recipes page */
+    .recipe-search label {
+        font-size: 14px;
+    }
+
+    .search-input-wrapper {
+        padding: 12px 15px;
+    }
+
+    .search-input-wrapper input {
+        font-size: 14px;
+    }
+
+    .search-input-wrapper i {
+        font-size: 18px;
     }
 
     /* Footer*/
@@ -673,7 +740,7 @@ textarea {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .section-heading h1,
     .section-heading h2 {
         font-size: 36px;
