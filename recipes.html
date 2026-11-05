@@ -52,8 +52,8 @@
                 <div class="recipe-search">
                     <div class="search-input-wrapper">
                         <i class="bi bi-search" aria-hidden="true"></i>
-                        <input type="search" id="recipe-search-input" aria-label="Search recipes" placeholder="Search by recipe name..."
-                            autocomplete="off">
+                        <input type="search" id="recipe-search-input" aria-label="Search recipes"
+                            placeholder="Search by recipe name..." autocomplete="off">
                     </div>
                 </div>
 
@@ -74,8 +74,11 @@
                     <button type="button" class="filter-button" data-category="dessert" aria-pressed="false">
                         Dessert
                     </button>
+                    <button type="button" class="filter-button" data-category="vegetarian" aria-pressed="false">
+                        Vegetarian
+                    </button>
                 </div>
-                
+
                 <!-- Recipes list -->
                 <div class="recipe-grid" id="all-recipes-list">
                     <article class="recipe-card">
@@ -101,8 +104,8 @@
 
                     <article class="recipe-card">
                         <a href="recipe.html?id=2" class="recipe-card-link">
-                                <img src="images/recipes/avocado-toast.webp" alt="Avocado toast served with egg"
-                                    class="recipe-card-image">
+                            <img src="images/recipes/avocado-toast.webp" alt="Avocado toast served with egg"
+                                class="recipe-card-image">
                             <div class="recipe-card-body">
                                 <span class="recipe-category">Breakfast</span>
                                 <h3>Avocado Toast</h3>
@@ -120,8 +123,8 @@
 
                     <article class="recipe-card">
                         <a href="recipe.html?id=3" class="recipe-card-link">
-                                <img src="images/recipes/chocolate-brownies.webp" alt="Homemade chocolate brownies"
-                                    class="recipe-card-image">
+                            <img src="images/recipes/chocolate-brownies.webp" alt="Homemade chocolate brownies"
+                                class="recipe-card-image">
                             <div class="recipe-card-body">
                                 <span class="recipe-category">Dessert</span>
                                 <h3>Chocolate Brownies</h3>
@@ -139,8 +142,8 @@
 
                     <article class="recipe-card">
                         <a href="recipe.html?id=3" class="recipe-card-link">
-                                <img src="images/recipes/blueberry-pancakes.webp" alt="Delicious Blueberry Pancakes"
-                                    class="recipe-card-image">
+                            <img src="images/recipes/blueberry-pancakes.webp" alt="Delicious Blueberry Pancakes"
+                                class="recipe-card-image">
                             <div class="recipe-card-body">
                                 <span class="recipe-category">Breakfast</span>
                                 <h3>Fluffy Blueberry Pancakes</h3>
@@ -157,8 +160,8 @@
 
                     <article class="recipe-card">
                         <a href="recipe.html?id=3" class="recipe-card-link">
-                                <img src="images/recipes/honey-garlic-salmon.webp" alt="Honey Garlic Salmon"
-                                    class="recipe-card-image">
+                            <img src="images/recipes/honey-garlic-salmon.webp" alt="Honey Garlic Salmon"
+                                class="recipe-card-image">
                             <div class="recipe-card-body">
                                 <span class="recipe-category">Dinner</span>
                                 <h3>Honey Garlic Salmon</h3>
@@ -175,8 +178,8 @@
 
                     <article class="recipe-card">
                         <a href="recipe.html?id=3" class="recipe-card-link">
-                                <img src="images/recipes/tomato-soup.webp" alt="Creamy Tomato & Basil Soup"
-                                    class="recipe-card-image">
+                            <img src="images/recipes/tomato-soup.webp" alt="Creamy Tomato & Basil Soup"
+                                class="recipe-card-image">
                             <div class="recipe-card-body">
                                 <span class="recipe-category">Lunch</span>
                                 <h3>Creamy Tomato & Basil Soup</h3>
@@ -193,8 +196,8 @@
 
                     <article class="recipe-card">
                         <a href="recipe.html?id=3" class="recipe-card-link">
-                                <img src="images/recipes/smoothie-bowl.webp" alt="Strawberry Banana Smoothie Bowl"
-                                    class="recipe-card-image">
+                            <img src="images/recipes/smoothie-bowl.webp" alt="Strawberry Banana Smoothie Bowl"
+                                class="recipe-card-image">
                             <div class="recipe-card-body">
                                 <span class="recipe-category">Breakfast</span>
                                 <h3>Strawberry Banana Smoothie Bowl</h3>
@@ -211,8 +214,8 @@
 
                     <article class="recipe-card">
                         <a href="recipe.html?id=3" class="recipe-card-link">
-                                <img src="images/recipes/caprese-sandwich.webp" alt="Homemade Caprese Sandwich"
-                                    class="recipe-card-image">
+                            <img src="images/recipes/caprese-sandwich.webp" alt="Homemade Caprese Sandwich"
+                                class="recipe-card-image">
                             <div class="recipe-card-body">
                                 <span class="recipe-category">Lunch</span>
                                 <h3>Caprese Sandwich</h3>
@@ -229,8 +232,8 @@
 
                     <article class="recipe-card">
                         <a href="recipe.html?id=3" class="recipe-card-link">
-                                <img src="images/recipes/lemon-drizzle-cake.webp" alt="Lemon Drizzle Cake"
-                                    class="recipe-card-image">
+                            <img src="images/recipes/lemon-drizzle-cake.webp" alt="Lemon Drizzle Cake"
+                                class="recipe-card-image">
                             <div class="recipe-card-body">
                                 <span class="recipe-category">Dessert</span>
                                 <h3>Lemon Drizzle Cake</h3>
@@ -246,6 +249,99 @@
                     </article>
                 </div>
             </div>
+        </section>
+
+        <!-- Favourite list and Suggest a Recipe Section -->
+        <section class="favourite-recipe container" aria-label="Favourites and recipe suggestions">
+            <div class="favourite-suggest-section-heading">
+                <h2>Your Recipe Corner</h2>
+                <p class="favourite-suggest-recipes-description">
+                    Keep your favourite recipes close and share your own delicious ideas.
+                </p>
+            </div>
+
+            <section class="favourite" aria-labelledby="favourites-heading">
+                <div class="favourite-header">
+                    <i class="bi bi-heart-fill" aria-hidden="true"></i>
+                    <h2 id="favourites-heading">Your Favourites</h2>
+                </div>
+                <div class="favourite-list" id="favourites-list">
+                    <h3>No favourites yet.</h3>
+                    <p>
+                        Tap the heart on a recipe card
+                        to save your favourites here.
+                    </p>
+                </div>
+            </section>
+
+            <section class="suggest-recipe" id="suggest-recipe" aria-labelledby="suggest-heading">
+                <div class="suggest-recipe-header">
+                    <i class="bi bi-pencil" aria-hidden="true"></i>
+                    <h2 id="suggest-heading">Suggest a Recipe</h2>
+                </div>
+                <form class="suggest-recipe-form" id="recipe-form">
+                    <label class="visually-hidden" for="recipe-name">
+                        Recipe Title
+                    </label>
+                    <input type="text" id="recipe-name" name="recipeName" placeholder="Recipe Title" required>
+                    <label class="visually-hidden" for="recipe-description">
+                        Description
+                    </label>
+                    <textarea id="recipe-description" name="description" rows="2" placeholder="Description"
+                        required></textarea>
+                    <div class="suggest-recipe-details">
+                        <div>
+                            <label class="visually-hidden" for="recipe-cooking-time">
+                                Cooking Time in Minutes
+                            </label>
+                            <input type="number" id="recipe-cooking-time" name="cookingTime" min="1" placeholder="Time"
+                                required>
+                        </div>
+                        <div>
+                            <label class="visually-hidden" for="recipe-servings">
+                                Number of Servings
+                            </label>
+                            <input type="number" id="recipe-servings" name="servings" min="1" placeholder="Serves"
+                                required>
+                        </div>
+                        <div class="category-field">
+                            <label class="visually-hidden" for="recipe-category">
+                                Recipe Category
+                            </label>
+                            <select id="recipe-category" name="category" required>
+                                <option value="">Category</option>
+                                <option value="breakfast">Breakfast</option>
+                                <option value="lunch">Lunch</option>
+                                <option value="dinner">Dinner</option>
+                                <option value="dessert">Dessert</option>
+                                <option value="dessert">Vegetarian</option>
+                            </select>
+                        </div>
+                    </div>
+                    <label class="visually-hidden" for="recipe-ingredients">
+                        Ingredients
+                    </label>
+                    <textarea id="recipe-ingredients" name="ingredients" rows="3"
+                        placeholder="Ingredients (one per line)" required></textarea>
+                    <label class="visually-hidden" for="recipe-instructions">
+                        Instructions
+                    </label>
+                    <textarea id="recipe-instructions" name="instructions" rows="3"
+                        placeholder="Instructions (one step per line)" required></textarea>
+                    <div class="photo-upload">
+                        <label class="visually-hidden" for="recipe-photo">
+                            Recipe Photo
+                        </label>
+                        <input type="file" id="recipe-photo" name="recipePhoto" accept="image/*">
+                        <button type="button" class="upload-button" disabled>
+                            Upload
+                        </button>
+                    </div>
+                    <button type="submit" class="recipe-submit-button" disabled>
+                        Submit Recipe
+                    </button>
+                </form>
+            </section>
         </section>
     </main>
 
