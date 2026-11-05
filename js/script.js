@@ -13,16 +13,8 @@ if (menuButton && navigation && menuIcon) {
     });
 }
 
-// Top 3 Most Loved Recipes
-function displayFeaturedRecipes() {
-    const featuredList = document.querySelector("#featured-recipes-list");
-
-    if (!featuredList) return;
-
-    const featuredRecipes = [...recipes]
-        .sort((a, b) => b.favouriteCount - a.favouriteCount)
-        .slice(0, 3);
-    featuredList.innerHTML = featuredRecipes.map(recipe => `
+function createRecipeCard(recipe) {
+    return `
         <article class="recipe-card">
             <a href="recipe.html?id=${recipe.id}" class="recipe-card-link">
                 <img
@@ -40,7 +32,30 @@ function displayFeaturedRecipes() {
                 </div>
             </a>
         </article>
-    `).join("");
+    `;
+}
+
+// Top 3 Most Loved Recipes
+function displayFeaturedRecipes() {
+    const featuredList = document.querySelector("#featured-recipes-list");
+
+    if (!featuredList) return;
+
+    const featuredRecipes = [...recipes]
+        .sort((a, b) => b.favouriteCount - a.favouriteCount)
+        .slice(0, 3);
+   
+    featuredList.innerHTML = featuredRecipes.map(createRecipeCard).join("");
+}
+
+
+function displayAllRecipes() {
+    const allRecipesList = document.querySelector("#all-recipes-list");
+
+    if (!allRecipesList) return;
+
+    allRecipesList.innerHTML = recipes.map(createRecipeCard).join("");
 }
 
 displayFeaturedRecipes();
+displayAllRecipes();

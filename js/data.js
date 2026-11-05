@@ -88,5 +88,25 @@ const recipes = [
         image: "images/recipes/lemon-drizzle-cake.webp",
         imageAlt: "Lemon drizzle cake",
         favouriteCount: 6
+    },
+    {
+        id: 10,
+        title: "Creamy Mushroom Risotto",
+        category: "Vegetarian",
+        description: "A creamy, comforting risotto made with tender mushrooms, garlic and Parmesan cheese.",
+        cookingTime: 35,
+        image: "images/recipes/mushroom-risotto.webp",
+        imageAlt: "Creamy mushroom risotto with fresh parsley",
+        favouriteCount: 0
+    },
+    {
+        id: 11,
+        title: "Chickpea & Spinach Curry",
+        category: "Vegetarian",
+        description: "A warm, flavourful curry with chickpeas, fresh spinach and a rich tomato sauce.",
+        cookingTime: 30,
+        image: "images/recipes/chickpea-spinach-curry.webp",
+        imageAlt: "Chickpea and spinach curry served with rice",
+        favouriteCount: 0
     }
 ];
