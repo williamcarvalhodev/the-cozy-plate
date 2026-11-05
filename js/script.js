@@ -13,7 +13,28 @@ if (menuButton && navigation && menuIcon) {
     });
 }
 
+document.addEventListener("click", function (event) {
+    const button = event.target.closest(".favourite-button");
+    if (!button) return;
+
+    const recipeId = Number(button.dataset.id);
+
+    if (favouriteIds.includes(recipeId)) {
+        favouriteIds = favouriteIds.filter(id => id !== recipeId);
+    } else {
+        favouriteIds.push(recipeId);
+    }
+
+    localStorage.setItem("favouriteIds", JSON.stringify(favouriteIds));
+
+    displayFeaturedRecipes();
+    displayAllRecipes();
+    displayFavourites();
+});
+
 function createRecipeCard(recipe) {
+    const isFavourite = favouriteIds.includes(recipe.id);
+
     return `
         <article class="recipe-card">
             <a href="recipe.html?id=${recipe.id}" class="recipe-card-link">
@@ -21,16 +42,33 @@ function createRecipeCard(recipe) {
                     src="${recipe.image}"
                     alt="${recipe.imageAlt}"
                     class="recipe-card-image">
-                <div class="recipe-card-body">
-                    <span class="recipe-category">${recipe.category}</span>
-                    <h3>${recipe.title}</h3>
-                    <p class="recipe-description">${recipe.description}</p>
-                    <p class="recipe-time">
-                        <i class="bi bi-clock" aria-hidden="true"></i>
-                        ${recipe.cookingTime} mins
-                    </p>
-                </div>
             </a>
+
+            <div class="recipe-card-body">
+                <div class="recipe-card-top">
+                    <span class="recipe-category">${recipe.category}</span>
+
+                    <button
+                        type="button"
+                        class="favourite-button"
+                        data-id="${recipe.id}"
+                        aria-pressed="${isFavourite}"
+                        aria-label="${isFavourite ? "Remove from" : "Add to"} favourites: ${recipe.title}">
+                        <i class="bi ${isFavourite ? "bi-heart-fill" : "bi-heart"}"
+                            aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <a href="recipe.html?id=${recipe.id}" class="recipe-title-link">
+                    <h3>${recipe.title}</h3>
+                </a>
+
+                <p class="recipe-description">${recipe.description}</p>
+                <p class="recipe-time">
+                    <i class="bi bi-clock" aria-hidden="true"></i>
+                    ${recipe.cookingTime} mins
+                </p>
+            </div>
         </article>
     `;
 }
@@ -44,7 +82,7 @@ function displayFeaturedRecipes() {
     const featuredRecipes = [...recipes]
         .sort((a, b) => b.favouriteCount - a.favouriteCount)
         .slice(0, 3);
-   
+
     featuredList.innerHTML = featuredRecipes.map(createRecipeCard).join("");
 }
 
@@ -53,7 +91,7 @@ let selectedCategory = "all";
 const filterButtons = document.querySelectorAll(".filter-button");
 
 filterButtons.forEach(button => {
-    button.addEventListener("click", function() {
+    button.addEventListener("click", function () {
         selectedCategory = button.dataset.category;
 
         filterButtons.forEach(filterButton => {
@@ -104,6 +142,36 @@ const searchInput = document.querySelector("#recipe-search-input");
 
 if (searchInput) {
     searchInput.addEventListener("input", displayAllRecipes);
+}
+
+function displayFavourites() {
+    const favouriteList = document.querySelector("#favourites-list");
+
+    if (!favouriteList) return;
+
+    const savedRecipes = recipes.filter(recipe =>
+        favouriteIds.includes(recipe.id)
+    );
+
+    if (savedRecipes.length === 0) {
+        favouriteList.innerHTML = `
+            <h3>No favourites yet.</h3>
+            <p>
+                Tap the heart on a recipe card
+                to save your favourites here.
+            </p>
+        `;
+        return;
+    }
+
+    favouriteList.innerHTML = savedRecipes.map(recipe => `
+        <div class="favourite-item">
+            <a href="recipe.html?id=${recipe.id}" class="favourite-link">
+                <img src="${recipe.image}" alt="" class="favourite-image">
+                <span>${recipe.title}</span>
+            </a>
+        </div>
+    `).join("");
 }
 
 displayFeaturedRecipes();

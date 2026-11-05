@@ -222,11 +222,9 @@ textarea {
 }
 
 .recipe-card-link {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    color: inherit;
-    text-decoration: none;
+    display: block;
+    height: auto;
+    flex-shrink: 0;
 }
 
 .recipe-card-image {
@@ -237,10 +235,8 @@ textarea {
 }
 
 .recipe-card-body {
-    display: flex;
-    flex-direction: column;
+    padding: 20px;
     flex: 1;
-    padding: 22px;
 }
 
 .recipe-category {
@@ -286,6 +282,41 @@ textarea {
 .recipe-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.recipe-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.recipe-card-top .recipe-category {
+    margin-bottom: 0;
+}
+
+.favourite-button {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--terracotta);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.favourite-button:hover {
+    transform: scale(1.1);
+}
+
+.recipe-title-link {
+    color: inherit;
+    text-decoration: none;
 }
 
 /* Suggest Recipe Section */
@@ -463,9 +494,9 @@ textarea {
     color: var(--green);
     font-size: 40px;
     margin: 0 0 20px;
-}favourite-suggest-
+}
 
-.single-recipe .recipe-ingredients ul {
+favourite-suggest- .single-recipe .recipe-ingredients ul {
     padding-left: 25px;
     margin: 0;
 }
@@ -552,8 +583,6 @@ textarea {
     margin: 60px auto 80px;
 }
 
-/* Both Cards */
-
 .favourite,
 .suggest-recipe {
     background-color: var(--white);
@@ -562,8 +591,6 @@ textarea {
     padding: 30px;
     min-width: 0;
 }
-
-/* Card Headers */
 
 .favourite-header,
 .suggest-recipe-header {
@@ -586,11 +613,6 @@ textarea {
     margin: 0;
 }
 
-
-/* ==================================
-   Favourites
-================================== */
-
 .favourite-list {
     text-align: center;
     padding: 20px 0;
@@ -609,24 +631,55 @@ textarea {
     margin: 0;
 }
 
+.favourite-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 0;
+    text-align: left;
+}
 
-/* ==================================
-   Suggest a Recipe Form
-================================== */
+.favourite-item + .favourite-item {
+    border-top: 1px solid #E8D9C5;
+}
+
+.favourite-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+
+    color: var(--green);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.favourite-link:hover {
+    color: var(--terracotta);
+}
+
+.favourite-image {
+    width: 55px;
+    height: 55px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.favourite-link span {
+    overflow-wrap: anywhere;
+}
 
 .suggest-recipe {
     scroll-margin-top: 30px;
 }
-
-/* Form Layout */
 
 .suggest-recipe-form {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
-
-/* Hidden Labels for Accessibility */
 
 .visually-hidden {
     position: absolute;
@@ -639,8 +692,6 @@ textarea {
     white-space: nowrap;
     border: 0;
 }
-
-/* Inputs, Select and Textareas */
 
 .suggest-recipe-form input,
 .suggest-recipe-form select,
@@ -661,21 +712,15 @@ textarea {
     font-size: 14px;
 }
 
-/* Textareas */
-
 .suggest-recipe-form textarea {
     resize: vertical;
     line-height: 1.5;
 }
 
-/* Placeholder Text */
-
 .suggest-recipe-form input::placeholder,
 .suggest-recipe-form textarea::placeholder {
     color: #777777;
 }
-
-/* Input Focus */
 
 .suggest-recipe-form input:focus,
 .suggest-recipe-form select:focus,
@@ -684,19 +729,15 @@ textarea {
     outline-offset: 2px;
 }
 
-/* Time, Servings and Category */
-
 .suggest-recipe-details {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
 }
 
-.suggest-recipe-details > div {
+.suggest-recipe-details>div {
     min-width: 0;
 }
-
-/* Photo Upload */
 
 .photo-upload {
     display: grid;
@@ -712,33 +753,23 @@ textarea {
     font-size: 12px;
 }
 
-/* File Selector Button */
-
 .suggest-recipe-form input[type="file"]::file-selector-button {
     background-color: var(--cream);
     color: var(--green);
-
     border: none;
     border-radius: 5px;
-
     padding: 8px;
     margin-right: 8px;
-
     font-family: inherit;
     cursor: pointer;
 }
 
-/* Upload Button */
-
 .upload-button {
     background-color: var(--white);
     color: var(--green);
-
     border: 1px solid #CCCCCC;
     border-radius: 7px;
-
     padding: 10px 15px;
-
     font-family: inherit;
     font-size: 14px;
 }
@@ -748,25 +779,18 @@ textarea {
     cursor: not-allowed;
 }
 
-/* Submit Button */
-
 .recipe-submit-button {
     display: block;
     width: 100%;
     padding: 13px 20px;
-
     background-color: var(--terracotta);
     color: var(--white);
-
     border: none;
     border-radius: 7px;
-
     font-family: inherit;
     font-size: 15px;
     font-weight: bold;
 }
-
-/* Temporary Disabled State */
 
 .recipe-submit-button:disabled {
     opacity: 0.7;
@@ -935,6 +959,7 @@ textarea {
         line-height: 1.2;
     }
 
+    /* Favourite and Suggest Section*/
     .favourite-recipe {
         gap: 20px;
     }
@@ -944,25 +969,21 @@ textarea {
         padding: 20px;
     }
 
-    /* Two Fields per Row */
+    .favourite-button {
+        font-size: 18px;
+    }
 
     .suggest-recipe-details {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    /* Category on a Separate Row */
-
     .category-field {
         grid-column: 1 / -1;
     }
 
-    /* Stack Photo and Upload Button */
-
     .photo-upload {
         grid-template-columns: 1fr;
     }
-
-
 }
 
 /* Mobile Screen */
@@ -1328,7 +1349,7 @@ textarea {
 
     /* Suggest recipe section */
     .suggest-section-heading h2,
-    .favourite-suggest-section-heading h2{
+    .favourite-suggest-section-heading h2 {
         font-size: 36px;
     }
 
@@ -1366,6 +1387,7 @@ textarea {
         line-height: 1.2;
     }
 
+    /* Favourite and Suggest Section */
     .suggest-recipe {
         padding: 20px;
     }
@@ -1380,19 +1402,13 @@ textarea {
         font-size: 20px;
     }
 
-    /* Two Fields per Row */
-
     .suggest-recipe-details {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    /* Category Uses Full Width */
-
     .category-field {
         grid-column: 1 / -1;
     }
-
-    /* Stack Photo and Upload Button */
 
     .photo-upload {
         grid-template-columns: 1fr;
