@@ -48,13 +48,41 @@ function displayFeaturedRecipes() {
     featuredList.innerHTML = featuredRecipes.map(createRecipeCard).join("");
 }
 
-
 function displayAllRecipes() {
     const allRecipesList = document.querySelector("#all-recipes-list");
+    const searchInput = document.querySelector("#recipe-search-input");
+    
 
-    if (!allRecipesList) return;
+    if (!allRecipesList || !searchInput) return;
 
-    allRecipesList.innerHTML = recipes.map(createRecipeCard).join("");
+    const searchTerm = searchInput.value.toLowerCase().trim();
+
+     if (searchTerm.length < 3) {
+        allRecipesList.innerHTML = recipes.map(createRecipeCard).join("");
+        return;
+    }
+
+    const filteredRecipes = recipes.filter(recipe =>
+        recipe.title.toLowerCase().includes(searchTerm)
+    );
+
+    if (filteredRecipes.length === 0) {
+        allRecipesList.innerHTML = `
+            <p class="no-recipes">
+                No recipes found. Try another name.
+            </p>
+        `;
+        pagination.innerHTML = "";
+        return;
+    }
+
+    allRecipesList.innerHTML = filteredRecipes.map(createRecipeCard).join("");
+}
+
+const searchInput = document.querySelector("#recipe-search-input");
+
+if (searchInput) {
+    searchInput.addEventListener("input", displayAllRecipes);
 }
 
 displayFeaturedRecipes();
