@@ -48,31 +48,52 @@ function displayFeaturedRecipes() {
     featuredList.innerHTML = featuredRecipes.map(createRecipeCard).join("");
 }
 
+let selectedCategory = "all";
+
+const filterButtons = document.querySelectorAll(".filter-button");
+
+filterButtons.forEach(button => {
+    button.addEventListener("click", function() {
+        selectedCategory = button.dataset.category;
+
+        filterButtons.forEach(filterButton => {
+            filterButton.classList.remove("active");
+            filterButton.setAttribute("aria-pressed", "false");
+        });
+
+        button.classList.add("active");
+        button.setAttribute("aria-pressed", "true");
+
+        displayAllRecipes();
+    });
+});
+
 function displayAllRecipes() {
     const allRecipesList = document.querySelector("#all-recipes-list");
     const searchInput = document.querySelector("#recipe-search-input");
-    
 
     if (!allRecipesList || !searchInput) return;
 
     const searchTerm = searchInput.value.toLowerCase().trim();
+    const filteredRecipes = recipes.filter(recipe => {
 
-     if (searchTerm.length < 3) {
-        allRecipesList.innerHTML = recipes.map(createRecipeCard).join("");
-        return;
-    }
+        const matchesCategory =
+            selectedCategory === "all" ||
+            recipe.category.toLowerCase() === selectedCategory;
 
-    const filteredRecipes = recipes.filter(recipe =>
-        recipe.title.toLowerCase().includes(searchTerm)
-    );
+        const matchesSearch =
+            searchTerm.length < 3 ||
+            recipe.title.toLowerCase().includes(searchTerm);
+
+        return matchesCategory && matchesSearch;
+    });
 
     if (filteredRecipes.length === 0) {
         allRecipesList.innerHTML = `
             <p class="no-recipes">
-                No recipes found. Try another name.
+                No recipes found. Try another search or category.
             </p>
         `;
-        pagination.innerHTML = "";
         return;
     }
 
