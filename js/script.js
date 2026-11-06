@@ -321,3 +321,68 @@ if (recipeForm && formMessage) {
         }
     });
 }
+
+// Recipe single page
+const recipeIdFromUrl = new URLSearchParams(window.location.search).get("id");
+
+if (recipeIdFromUrl) {
+    const selectedRecipe = recipes.find(recipe =>
+        recipe.id === Number(recipeIdFromUrl)
+    );
+
+    if (selectedRecipe) {
+        console.log("Selected recipe:", selectedRecipe);
+    } else {
+        console.log("Recipe not found.");
+    }
+}
+
+const recipeTitle = document.querySelector("#recipe-title");
+
+if (recipeTitle) {
+    const recipeIdFromUrl = new URLSearchParams(window.location.search).get("id");
+    const selectedRecipe = recipes.find(recipe =>
+        recipe.id === Number(recipeIdFromUrl)
+    );
+
+    if (selectedRecipe) {
+        document.title = `The Cozy Plate | ${selectedRecipe.title}`;
+        recipeTitle.textContent = selectedRecipe.title;
+        document.querySelector("#recipe-cooking-time").textContent =
+            selectedRecipe.cookingTime;
+        document.querySelector("#recipe-servings").textContent =
+            selectedRecipe.servesQty;
+        document.querySelector("#recipe-category").textContent =
+            selectedRecipe.category;
+
+        const recipeImage = document.querySelector("#recipe-detail-image");
+
+        if (selectedRecipe.image) {
+            recipeImage.src = selectedRecipe.image;
+            recipeImage.alt = selectedRecipe.imageAlt;
+        } else {
+            document.querySelector(".recipe-image").style.display = "none";
+        }
+
+        const ingredientsList = document.querySelector("#recipe-ingredients-list");
+
+        selectedRecipe.ingredients.forEach(ingredient => {
+            const listItem = document.createElement("li");
+            listItem.textContent = ingredient;
+            ingredientsList.appendChild(listItem);
+        });
+
+        const instructionsList = document.querySelector("#recipe-instructions-list");
+        selectedRecipe.instructions.forEach(instruction => {
+            const listItem = document.createElement("li");
+            listItem.textContent = instruction;
+            instructionsList.appendChild(listItem);
+        });
+
+    } else {
+        recipeTitle.textContent = "Recipe not found.";
+        document.querySelector(".recipe-meta").style.display = "none";
+        document.querySelector(".recipe-detail").style.display = "none";
+        document.querySelector(".recipe-instructions").style.display = "none";
+    }
+}
