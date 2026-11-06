@@ -111,4 +111,5 @@ const recipes = [
     }
 ];
 
-let favouriteIds = JSON.parse(localStorage.getItem("favouriteIds")) || [];
+let favouriteIds = [];
+let savedCounts = {};

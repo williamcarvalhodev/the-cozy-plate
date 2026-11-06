@@ -13,16 +13,32 @@ if (menuButton && navigation && menuIcon) {
     });
 }
 
+favouriteIds = JSON.parse(localStorage.getItem("favouriteIds")) || [];
+savedCounts = JSON.parse(localStorage.getItem("favouriteCounts")) || {};
+
+recipes.forEach(recipe => {
+    if (savedCounts[recipe.id] !== undefined) {
+        recipe.favouriteCount = savedCounts[recipe.id];
+    }
+});
+
 document.addEventListener("click", function (event) {
     const button = event.target.closest(".favourite-button");
     if (!button) return;
 
     const recipeId = Number(button.dataset.id);
+    const recipe = recipes.find(recipe => recipe.id === recipeId);
+
+    if (!recipe) return;
 
     if (favouriteIds.includes(recipeId)) {
         favouriteIds = favouriteIds.filter(id => id !== recipeId);
     } else {
         favouriteIds.push(recipeId);
+
+        recipe.favouriteCount++;
+        savedCounts[recipe.id] = recipe.favouriteCount;
+        localStorage.setItem("favouriteCounts", JSON.stringify(savedCounts));
     }
 
     localStorage.setItem("favouriteIds", JSON.stringify(favouriteIds));
