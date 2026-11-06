@@ -496,11 +496,6 @@ textarea {
     margin: 0 0 20px;
 }
 
-favourite-suggest- .single-recipe .recipe-ingredients ul {
-    padding-left: 25px;
-    margin: 0;
-}
-
 .single-recipe .recipe-ingredients li {
     color: var(--green);
     font-size: 18px;
@@ -795,6 +790,24 @@ favourite-suggest- .single-recipe .recipe-ingredients ul {
 .recipe-submit-button:disabled {
     opacity: 0.7;
     cursor: not-allowed;
+}
+
+.suggest-recipe-form .input-error {
+    border-color: #B42318;
+}
+
+.form-message {
+    font-size: 14px;
+    text-align: center;
+    margin: 5px 0 0;
+}
+
+.form-message.error {
+    color: #B42318;
+}
+
+.form-message.success {
+    color: var(--green);
 }
 
 /* Footer */

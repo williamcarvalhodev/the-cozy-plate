@@ -13,8 +13,13 @@ if (menuButton && navigation && menuIcon) {
     });
 }
 
+// loads storage date from data.js
 favouriteIds = JSON.parse(localStorage.getItem("favouriteIds")) || [];
 savedCounts = JSON.parse(localStorage.getItem("favouriteCounts")) || {};
+
+const originalRecipesCount = recipes.length;
+const storedRecipes = JSON.parse(localStorage.getItem("addedRecipes")) || [];
+recipes.push(...storedRecipes);
 
 recipes.forEach(recipe => {
     if (savedCounts[recipe.id] !== undefined) {
@@ -22,6 +27,7 @@ recipes.forEach(recipe => {
     }
 });
 
+// Add favourite recipe
 document.addEventListener("click", function (event) {
     const button = event.target.closest(".favourite-button");
     if (!button) return;
@@ -48,6 +54,7 @@ document.addEventListener("click", function (event) {
     displayFavourites();
 });
 
+// Create recipe card
 function createRecipeCard(recipe) {
     const isFavourite = favouriteIds.includes(recipe.id);
 
@@ -102,6 +109,7 @@ function displayFeaturedRecipes() {
     featuredList.innerHTML = featuredRecipes.map(createRecipeCard).join("");
 }
 
+// select recipe categories/filter
 let selectedCategory = "all";
 
 const filterButtons = document.querySelectorAll(".filter-button");
@@ -122,6 +130,7 @@ filterButtons.forEach(button => {
     });
 });
 
+// Display all recipes
 function displayAllRecipes() {
     const allRecipesList = document.querySelector("#all-recipes-list");
     const searchInput = document.querySelector("#recipe-search-input");
@@ -154,12 +163,14 @@ function displayAllRecipes() {
     allRecipesList.innerHTML = filteredRecipes.map(createRecipeCard).join("");
 }
 
+// Search bar
 const searchInput = document.querySelector("#recipe-search-input");
 
 if (searchInput) {
     searchInput.addEventListener("input", displayAllRecipes);
 }
 
+// Display favourite recipes list
 function displayFavourites() {
     const favouriteList = document.querySelector("#favourites-list");
 
@@ -193,3 +204,120 @@ function displayFavourites() {
 displayFeaturedRecipes();
 displayAllRecipes();
 displayFavourites();
+
+// Submit recipe
+const recipeForm = document.querySelector("#recipe-form");
+const formMessage = document.querySelector("#form-message");
+
+if (recipeForm && formMessage) {
+    recipeForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const requiredFields = recipeForm.querySelectorAll("[required]");
+        let isValid = true;
+
+        requiredFields.forEach(field => {
+            if (field.value.trim() === "" || !field.checkValidity()) {
+                field.classList.add("input-error");
+                isValid = false;
+            } else {
+                field.classList.remove("input-error");
+            }
+        });
+
+        if (!isValid) {
+            formMessage.textContent = "Please complete all required fields correctly.";
+            formMessage.className = "form-message error";
+            return;
+        }
+
+        const title = document.querySelector("#recipe-name").value.trim();
+        const description = document.querySelector("#recipe-description").value.trim();
+        const cookingTime = Number(document.querySelector("#recipe-cooking-time").value);
+        const servesQty = Number(document.querySelector("#recipe-servings").value);
+        const category = document.querySelector("#recipe-category").value;
+        const photoInput = document.querySelector("#recipe-photo");
+        const photoFile = photoInput.files[0];
+
+        const ingredients = document.querySelector("#recipe-ingredients").value
+            .split("\n")
+            .map(item => item.trim())
+            .filter(item => item !== "");
+
+        const instructions = document.querySelector("#recipe-instructions").value
+            .split("\n")
+            .map(item => item.trim())
+            .filter(item => item !== "");
+
+        const newRecipe = {
+            id: Math.max(...recipes.map(recipe => recipe.id)) + 1,
+            title: title,
+            category: category.charAt(0).toUpperCase() + category.slice(1),
+            description: description,
+            cookingTime: cookingTime,
+            servesQty: servesQty,
+            image: "",
+            imageAlt: title,
+            favouriteCount: 0,
+            ingredients: ingredients,
+            instructions: instructions
+        };
+
+         function saveRecipe(image) {
+            newRecipe.image = image;
+
+            // Get submitted recipes, including the new one
+            const addedRecipes = [
+                ...recipes.slice(originalRecipesCount),
+                newRecipe
+            ];
+
+            // Save the submitted recipes in the browser
+            try {
+                localStorage.setItem("addedRecipes", JSON.stringify(addedRecipes));
+            } catch (error) {
+                formMessage.textContent = "Could not save recipe. Try a smaller photo.";
+                formMessage.className = "form-message error";
+                return;
+            }
+
+            // Add to the existing recipes array
+            recipes.push(newRecipe);
+
+            // Update the recipe list
+            displayAllRecipes();
+
+            // Clear the form
+            recipeForm.reset();
+
+            // Show success message
+            formMessage.textContent = "Your recipe has been added successfully!";
+            formMessage.className = "form-message success";
+        }
+
+        // Check if the user uploaded a photo
+        if (photoFile) {
+            const reader = new FileReader();
+
+            reader.onload = function () {
+                saveRecipe(reader.result);
+            };
+
+            reader.readAsDataURL(photoFile);
+        } else {
+            saveRecipe("");
+        }
+    });
+
+    recipeForm.addEventListener("input", function (event) {
+        const field = event.target;
+
+        if (field.matches("[required]")) {
+            if (field.value.trim() === "" || !field.checkValidity()) {
+                field.classList.add("input-error");
+            } else {
+                field.classList.remove("input-error");
+            }
+        }
+    });
+}

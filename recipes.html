@@ -113,7 +113,7 @@
                     <i class="bi bi-pencil" aria-hidden="true"></i>
                     <h2 id="suggest-heading">Suggest a Recipe</h2>
                 </div>
-                <form class="suggest-recipe-form" id="recipe-form">
+                <form class="suggest-recipe-form" id="recipe-form" novalidate>
                     <label class="visually-hidden" for="recipe-name">
                         Recipe Title
                     </label>
@@ -166,12 +166,13 @@
                         <label class="visually-hidden" for="recipe-photo">
                             Recipe Photo
                         </label>
-                        <input type="file" id="recipe-photo" name="recipePhoto" accept="image/*">
-                        <button type="button" class="upload-button" disabled>
+                        <input type="file" id="recipe-photo" name="recipePhoto" accept="image/*" required>
+                        <button type="button" class="upload-button">
                             Upload
                         </button>
+                        <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
                     </div>
-                    <button type="submit" class="recipe-submit-button" disabled>
+                    <button type="submit" class="recipe-submit-button">
                         Submit Recipe
                     </button>
                 </form>

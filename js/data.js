@@ -7,7 +7,10 @@ const recipes = [
         cookingTime: 30,
         image: "images/recipes/creamy-chicken-pasta.webp",
         imageAlt: "Creamy chicken pasta with basil",
-        favouriteCount: 0
+        favouriteCount: 0,
+        servesQty: 30,
+        ingredients: [],
+        instructions: []
     },
     {
         id: 2,
@@ -17,7 +20,10 @@ const recipes = [
         cookingTime: 15,
         image: "images/recipes/avocado-toast.webp",
         imageAlt: "Avocado toast served with egg",
-        favouriteCount: 0
+        favouriteCount: 0,
+        servesQty: 15,
+        ingredients: [],
+        instructions: []
     },
     {
         id: 3,
@@ -27,7 +33,10 @@ const recipes = [
         cookingTime: 45,
         image: "images/recipes/chocolate-brownies.webp",
         imageAlt: "Homemade chocolate brownies",
-        favouriteCount: 0
+        favouriteCount: 0,
+        servesQty: 45,
+        ingredients: [],
+        instructions: []
     },
     {
         id: 4,
@@ -37,7 +46,10 @@ const recipes = [
         cookingTime: 25,
         image: "images/recipes/blueberry-pancakes.webp",
         imageAlt: "Fluffy blueberry pancakes",
-        favouriteCount: 0
+        favouriteCount: 0,
+        servesQty: 25,
+        ingredients: [],
+        instructions: []
     },
     {
         id: 5,
@@ -47,7 +59,10 @@ const recipes = [
         cookingTime: 10,
         image: "images/recipes/smoothie-bowl.webp",
         imageAlt: "Strawberry banana smoothie bowl",
-        favouriteCount: 0
+        favouriteCount: 0,
+        servesQty: 10,
+        ingredients: [],
+        instructions: []
     },
     {
         id: 6,
@@ -57,7 +72,10 @@ const recipes = [
         cookingTime: 15,
         image: "images/recipes/caprese-sandwich.webp",
         imageAlt: "Homemade Caprese Sandwich",
-        favouriteCount: 0
+        favouriteCount: 0,
+        servesQty: 15,
+        ingredients: [],
+        instructions: []
     },
     {
         id: 7,
@@ -67,7 +85,10 @@ const recipes = [
         cookingTime: 30,
         image: "images/recipes/tomato-soup.webp",
         imageAlt: "Creamy tomato and basil soup",
-        favouriteCount: 10
+        favouriteCount: 10,
+        servesQty: 30,
+        ingredients: [],
+        instructions: []
     },
     {
         id: 8,
@@ -77,7 +98,10 @@ const recipes = [
         cookingTime: 30,
         image: "images/recipes/honey-garlic-salmon.webp",
         imageAlt: "Honey garlic salmon",
-        favouriteCount: 0
+        favouriteCount: 0,
+        servesQty: 30,
+        ingredients: [],
+        instructions: []
     },
     {
         id: 9,
@@ -87,7 +111,10 @@ const recipes = [
         cookingTime: 60,
         image: "images/recipes/lemon-drizzle-cake.webp",
         imageAlt: "Lemon drizzle cake",
-        favouriteCount: 6
+        favouriteCount: 6,
+        servesQty: 60,
+        ingredients: [],
+        instructions: []
     },
     {
         id: 10,
@@ -97,7 +124,10 @@ const recipes = [
         cookingTime: 35,
         image: "images/recipes/mushroom-risotto.webp",
         imageAlt: "Creamy mushroom risotto with fresh parsley",
-        favouriteCount: 0
+        favouriteCount: 0,
+        servesQty: 35,
+        ingredients: [],
+        instructions: []
     },
     {
         id: 11,
@@ -107,7 +137,10 @@ const recipes = [
         cookingTime: 30,
         image: "images/recipes/chickpea-spinach-curry.webp",
         imageAlt: "Chickpea and spinach curry served with rice",
-        favouriteCount: 0
+        favouriteCount: 0,
+        servesQty: 30,
+        ingredients: [],
+        instructions: []
     }
 ];
 
