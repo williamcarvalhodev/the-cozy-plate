@@ -176,3 +176,4 @@ function displayFavourites() {
 
 displayFeaturedRecipes();
 displayAllRecipes();
+displayFavourites();
