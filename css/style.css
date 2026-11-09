@@ -481,6 +481,10 @@ textarea {
     border-radius: 12px;
 }
 
+.single-recipe .recipe-detail.no-image {
+    grid-template-columns: 1fr;
+}
+
 .single-recipe .recipe-ingredients h2,
 .recipe-instructions h2 {
     color: var(--green);

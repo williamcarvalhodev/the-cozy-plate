@@ -146,9 +146,7 @@ function displayAllRecipes() {
             selectedCategory === "all" ||
             recipe.category.toLowerCase() === selectedCategory;
 
-        const matchesSearch =
-            searchTerm.length < 3 ||
-            recipe.title.toLowerCase().includes(searchTerm);
+        const matchesSearch = recipe.title.toLowerCase().includes(searchTerm);
 
         return matchesCategory && matchesSearch;
     });
@@ -270,13 +268,11 @@ if (recipeForm && formMessage) {
         function saveRecipe(image) {
             newRecipe.image = image;
 
-            // Get submitted recipes, including the new one
             const addedRecipes = [
                 ...recipes.slice(originalRecipesCount),
                 newRecipe
             ];
 
-            // Save the submitted recipes in the browser
             try {
                 localStorage.setItem("addedRecipes", JSON.stringify(addedRecipes));
             } catch (error) {
@@ -285,21 +281,22 @@ if (recipeForm && formMessage) {
                 return;
             }
 
-            // Add to the existing recipes array
             recipes.push(newRecipe);
+            selectedCategory = "all";
 
-            // Update the recipe list
+            filterButtons.forEach(button => {
+                const isAll = button.dataset.category === "all";
+                button.classList.toggle("active", isAll);
+                button.setAttribute("aria-pressed", isAll);
+            });
+
+            searchInput.value = "";
             displayAllRecipes();
-
-            // Clear the form
             recipeForm.reset();
-
-            // Show success message
             formMessage.textContent = "Your recipe has been added successfully!";
             formMessage.className = "form-message success";
         }
 
-        // Check if the user uploaded a photo
         if (photoFile) {
             const reader = new FileReader();
 
@@ -352,6 +349,7 @@ if (recipeTitle) {
             recipeImage.alt = selectedRecipe.imageAlt;
         } else {
             document.querySelector(".recipe-image").style.display = "none";
+            document.querySelector(".recipe-detail").classList.add("no-image");
         }
 
         const ingredientsList = document.querySelector("#recipe-ingredients-list");
