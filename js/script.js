@@ -60,12 +60,14 @@ function createRecipeCard(recipe) {
 
     return `
         <article class="recipe-card">
-            <a href="recipe.html?id=${recipe.id}" class="recipe-card-link">
-                <img
-                    src="${recipe.image}"
-                    alt="${recipe.imageAlt}"
-                    class="recipe-card-image">
-            </a>
+            ${recipe.image ? `
+                <a href="recipe.html?id=${recipe.id}" class="recipe-card-link">
+                    <img
+                        src="${recipe.image}"
+                        alt="${recipe.imageAlt}"
+                        class="recipe-card-image">
+                </a>
+            ` : ""}
 
             <div class="recipe-card-body">
                 <div class="recipe-card-top">
@@ -194,7 +196,9 @@ function displayFavourites() {
     favouriteList.innerHTML = savedRecipes.map(recipe => `
         <div class="favourite-item">
             <a href="recipe.html?id=${recipe.id}" class="favourite-link">
-                <img src="${recipe.image}" alt="" class="favourite-image">
+                ${recipe.image ? `
+                    <img src="${recipe.image}" alt="" class="favourite-image">
+                ` : ""}
                 <span>${recipe.title}</span>
             </a>
         </div>
@@ -263,7 +267,7 @@ if (recipeForm && formMessage) {
             instructions: instructions
         };
 
-         function saveRecipe(image) {
+        function saveRecipe(image) {
             newRecipe.image = image;
 
             // Get submitted recipes, including the new one
@@ -323,20 +327,6 @@ if (recipeForm && formMessage) {
 }
 
 // Recipe single page
-const recipeIdFromUrl = new URLSearchParams(window.location.search).get("id");
-
-if (recipeIdFromUrl) {
-    const selectedRecipe = recipes.find(recipe =>
-        recipe.id === Number(recipeIdFromUrl)
-    );
-
-    if (selectedRecipe) {
-        console.log("Selected recipe:", selectedRecipe);
-    } else {
-        console.log("Recipe not found.");
-    }
-}
-
 const recipeTitle = document.querySelector("#recipe-title");
 
 if (recipeTitle) {
